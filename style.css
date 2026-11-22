@@ -1,0 +1,320 @@
+:root {
+  --f2d20-bg: rgba(13, 17, 23, 0.94);
+  --f2d20-surface: rgba(22, 27, 36, 0.96);
+  --f2d20-border: rgba(245, 158, 11, 0.35);
+  --f2d20-accent: #f59e0b;
+  --f2d20-accent-soft: rgba(245, 158, 11, 0.14);
+  --f2d20-text: #f3f4f6;
+  --f2d20-muted: #9ca3af;
+  --f2d20-hp: #22c55e;
+  --f2d20-rad: #ef4444;
+}
+
+#f2d20-hud[data-theme="phosphor"] {
+  --f2d20-bg: rgba(7, 16, 10, 0.94);
+  --f2d20-surface: rgba(12, 26, 17, 0.96);
+  --f2d20-border: rgba(34, 197, 94, 0.42);
+  --f2d20-accent: #4ade80;
+  --f2d20-accent-soft: rgba(74, 222, 128, 0.14);
+  --f2d20-text: #dcfce7;
+  --f2d20-muted: #86efac;
+  --f2d20-hp: #4ade80;
+}
+
+#f2d20-hud[data-theme="slate"] {
+  --f2d20-bg: rgba(15, 23, 42, 0.95);
+  --f2d20-surface: rgba(30, 41, 59, 0.96);
+  --f2d20-border: rgba(148, 163, 184, 0.28);
+  --f2d20-accent: #e2e8f0;
+  --f2d20-accent-soft: rgba(148, 163, 184, 0.14);
+  --f2d20-text: #f8fafc;
+  --f2d20-muted: #94a3b8;
+  --f2d20-hp: #16a34a;
+}
+
+#f2d20-hud {
+  position: fixed;
+  top: 64px;
+  right: 16px;
+  width: 300px;
+  z-index: 2999;
+  background: var(--f2d20-bg);
+  border: 1px solid var(--f2d20-border);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  color: var(--f2d20-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  user-select: none;
+}
+
+#f2d20-hud.f2d20-hidden {
+  display: none;
+}
+
+.f2d20-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  background: var(--f2d20-surface);
+  border-bottom: 1px solid var(--f2d20-border);
+  cursor: move;
+}
+
+.f2d20-title-block {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.f2d20-char-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--f2d20-accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.f2d20-char-meta {
+  font-size: 10.5px;
+  color: var(--f2d20-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.f2d20-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.f2d20-icon-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--f2d20-muted);
+  border-radius: 5px;
+  padding: 3px 6px;
+  cursor: pointer;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.f2d20-icon-btn:hover {
+  color: var(--f2d20-text);
+  background: var(--f2d20-accent-soft);
+}
+
+.f2d20-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#f2d20-hud.f2d20-collapsed .f2d20-body {
+  display: none;
+}
+
+.f2d20-vital-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.f2d20-vital-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.f2d20-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--f2d20-muted);
+  letter-spacing: 0.04em;
+}
+
+.f2d20-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.f2d20-steppers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.f2d20-step-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: 1px solid var(--f2d20-border);
+  background: var(--f2d20-surface);
+  color: var(--f2d20-text);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f2d20-step-btn:hover {
+  background: var(--f2d20-accent-soft);
+  border-color: var(--f2d20-accent);
+}
+
+.f2d20-hp-track {
+  position: relative;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+}
+
+.f2d20-hp-fill {
+  height: 100%;
+  background: var(--f2d20-hp);
+  transition: width 150ms ease;
+}
+
+.f2d20-hp-fill.is-low {
+  background: #f59e0b;
+}
+
+.f2d20-hp-fill.is-critical {
+  background: #ef4444;
+}
+
+.f2d20-rad-fill {
+  height: 100%;
+  margin-left: auto;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(239, 68, 68, 0.75),
+    rgba(239, 68, 68, 0.75) 4px,
+    rgba(127, 29, 29, 0.85) 4px,
+    rgba(127, 29, 29, 0.85) 8px
+  );
+  transition: width 150ms ease;
+}
+
+.f2d20-ap-pips {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+
+.f2d20-ap-pip {
+  height: 8px;
+  border-radius: 3px;
+  border: 1px solid var(--f2d20-border);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  padding: 0;
+}
+
+.f2d20-ap-pip.is-active {
+  background: var(--f2d20-accent);
+  border-color: var(--f2d20-accent);
+}
+
+.f2d20-sub-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.f2d20-special-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.f2d20-special-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 2px;
+  background: var(--f2d20-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.f2d20-special-cell:hover {
+  border-color: var(--f2d20-accent);
+}
+
+.f2d20-special-key {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--f2d20-muted);
+}
+
+.f2d20-special-val {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--f2d20-text);
+  margin-top: 1px;
+}
+
+.f2d20-location-bar {
+  font-size: 11px;
+  color: var(--f2d20-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Settings Drawer Styles */
+.f2d20-setting-row {
+  margin: 6px 0;
+}
+
+.f2d20-setting-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.f2d20-setting-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.f2d20-hint {
+  display: block;
+  margin-top: 8px;
+  opacity: 0.78;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  #f2d20-hud {
+    top: auto;
+    bottom: 64px;
+    right: 8px;
+    width: calc(100vw - 16px);
+    max-width: 320px;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "display_name": "Fallout 2d20 Tracker",
+  "loading_order": 100,
+  "requires": [],
+  "optional": [],
+  "js": "index.js",
+  "css": "style.css",
+  "author": "Vault-Tec TTRPG Tools",
+  "version": "1.0.0",
+  "homePage": "https://github.com/example/fallout-2d20-tracker",
+  "auto_update": false,
+  "minimum_client_version": "1.12.0"
+}

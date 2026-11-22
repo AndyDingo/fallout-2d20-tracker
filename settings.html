@@ -1,0 +1,87 @@
+<div class="f2d20-settings-drawer">
+  <div class="inline-drawer">
+    <div class="inline-drawer-toggle inline-drawer-header">
+      <b>Fallout 2d20 Tracker</b>
+      <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+    </div>
+    <div class="inline-drawer-content">
+      <div class="f2d20-setting-row">
+        <label class="checkbox_label" for="f2d20_enabled">
+          <input id="f2d20_enabled" type="checkbox" />
+          <span>Enable Fallout 2d20 HUD &amp; Tracker</span>
+        </label>
+      </div>
+
+      <div class="f2d20-setting-row">
+        <label class="checkbox_label" for="f2d20_hud_visible">
+          <input id="f2d20_hud_visible" type="checkbox" />
+          <span>Show Floating Pip-HUD Overlay</span>
+        </label>
+      </div>
+
+      <div class="f2d20-setting-row">
+        <label class="checkbox_label" for="f2d20_auto_calc_hp">
+          <input id="f2d20_auto_calc_hp" type="checkbox" />
+          <span>Auto-calculate Max HP (END + LCK + Level - 1)</span>
+        </label>
+      </div>
+
+      <div class="f2d20-setting-row">
+        <label class="checkbox_label" for="f2d20_auto_parse">
+          <input id="f2d20_auto_parse" type="checkbox" />
+          <span>Auto-parse GM status tags ([HP: -2 | AP: +1 | Rads: +1])</span>
+        </label>
+      </div>
+
+      <div class="f2d20-setting-row">
+        <label class="checkbox_label" for="f2d20_inject_prompt">
+          <input id="f2d20_inject_prompt" type="checkbox" />
+          <span>Inject S.P.E.C.I.A.L. &amp; HP/AP into AI Prompt</span>
+        </label>
+      </div>
+
+      <div class="f2d20-setting-grid">
+        <div>
+          <label for="f2d20_prompt_depth"><small>Injection Depth</small></label>
+          <input id="f2d20_prompt_depth" class="text_pole" type="number" min="0" max="12" step="1" />
+        </div>
+        <div>
+          <label for="f2d20_hud_theme"><small>HUD Theme</small></label>
+          <select id="f2d20_hud_theme" class="text_pole">
+            <option value="amber">Vault Amber</option>
+            <option value="phosphor">Pip Phosphor Green</option>
+            <option value="slate">Clean Slate</option>
+          </select>
+        </div>
+      </div>
+
+      <hr class="sysHR" />
+
+      <div class="f2d20-setting-actions">
+        <button id="f2d20_btn_toggle_hud" class="menu_button" type="button">
+          <i class="fa-solid fa-eye"></i> Toggle HUD
+        </button>
+        <button id="f2d20_btn_rest" class="menu_button" type="button">
+          <i class="fa-solid fa-bed"></i> Full Rest
+        </button>
+        <button id="f2d20_btn_reset" class="menu_button" type="button">
+          <i class="fa-solid fa-rotate-left"></i> Reset Chat Sheet
+        </button>
+      </div>
+
+      <div class="f2d20-setting-actions" style="margin-top: 8px;">
+        <button id="f2d20_btn_export" class="menu_button" type="button">
+          <i class="fa-solid fa-download"></i> Export JSON
+        </button>
+        <button id="f2d20_btn_import" class="menu_button" type="button">
+          <i class="fa-solid fa-upload"></i> Import JSON
+        </button>
+        <input id="f2d20_import_file" type="file" accept=".json" style="display: none;" />
+      </div>
+
+      <small class="f2d20-hint">
+        Slash commands: <code>/f2d20 status</code>, <code>/f2d20 hp -3</code>, <code>/f2d20 ap +1</code>, <code>/f2d20 rads +2</code>, <code>/f2d20 luck -1</code>, <code>/f2d20 special END 7</code>, <code>/f2d20 rest</code>
+      </small>
+    </div>
+  </div>
+</div>
